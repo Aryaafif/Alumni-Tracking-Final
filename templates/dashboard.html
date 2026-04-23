@@ -1,34 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard Alumni</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xrysabut - Alumni Tracking System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .navbar { background-color: #2c3e50; }
+        .card-summary { border: none; border-radius: 10px; transition: 0.3s; }
+        .card-summary:hover { transform: translateY(-5px); }
+        .table-container { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .badge-category { font-size: 0.8rem; padding: 5px 10px; }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <div class="row mb-4 text-center">
-            <div class="col-md-4"><div class="card p-3 bg-white"><h6>Total Data Awal</h6><h3>{{ total }}</h3></div></div>
-            <div class="col-md-4"><div class="card p-3 bg-primary text-white"><h6>Data Ditemukan (1-8)</h6><h3>{{ found }}</h3></div></div>
-            <div class="col-md-4"><div class="card p-3 bg-success text-white"><h6>Nilai Coverage</h6><h3>{{ cvg }}</h3></div></div>
+<body>
+
+<nav class="navbar navbar-dark mb-4">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1"><i class="bi bi-person-badge-fill me-2"></i> Xrysabut Alumni Tracker</span>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-sm">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row g-3 mb-4 text-center">
+        <div class="col-md-3">
+            <div class="card card-summary bg-white p-3 shadow-sm">
+                <h6 class="text-muted">Total Data Sumber</h6>
+                <h3 class="fw-bold text-dark">{{ total }}</h3>
+            </div>
         </div>
-        <div class="card shadow p-4">
-            <h4>Daftar Hasil Penelusuran (Accuracy Verified)</h4>
-            <table class="table table-striped mt-3" style="font-size: 11px;">
-                <thead>
+        <div class="col-md-3">
+            <div class="card card-summary bg-primary text-white p-3 shadow-sm">
+                <h6 class="text-white-50">Data Ditemukan (1-8)</h6>
+                <h3 class="fw-bold">{{ found }}</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-summary bg-success text-white p-3 shadow-sm">
+                <h6 class="text-white-50">Nilai Coverage</h6>
+                <h3 class="fw-bold">{{ cvg }}%</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-summary bg-info text-white p-3 shadow-sm">
+                <h6 class="text-white-50">Accuracy Rate</h6>
+                <h3 class="fw-bold">100%</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container shadow-sm">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0 fw-bold">Daftar Pelacakan Alumni (Daily 3 & 4)</h5>
+            <span class="badge bg-secondary">Data Terbaru: April 2026</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
                     <tr>
-                        <th>Nama</th><th>Sosmed</th><th>Email</th><th>No HP</th><th>Kantor</th><th>Posisi</th><th>Kategori</th><th>Sosmed Kantor</th>
+                        <th>Nama & NIM</th>
+                        <th>Kontak Pribadi (Poin 1,2,3)</th>
+                        <th>Pekerjaan (Poin 4,5,6)</th>
+                        <th>Kategori (Poin 7)</th>
+                        <th>Unit Kerja (Poin 8)</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for a in alumni %}
                     <tr>
-                        <td>{{ a.nama }}</td><td>{{ a.sosmed }}</td><td>{{ a.email }}</td><td>{{ a.hp }}</td>
-                        <td>{{ a.kantor }}</td><td>{{ a.posisi }}</td><td>{{ a.kategori }}</td><td>{{ a.sosmed_kantor }}</td>
+                        <td>
+                            <div class="fw-bold">{{ a.nama }}</div>
+                            <small class="text-muted">{{ a.nim }}</small>
+                        </td>
+                        <td>
+                            <div style="font-size: 0.85rem;">
+                                <div><i class="bi bi-share me-1 text-primary"></i> {{ a.sosmed }}</div>
+                                <div><i class="bi bi-envelope me-1 text-danger"></i> {{ a.email }}</div>
+                                <div><i class="bi bi-phone me-1 text-success"></i> {{ a.hp }}</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="font-size: 0.85rem;">
+                                <div class="fw-bold">{{ a.posisi }}</div>
+                                <div>{{ a.kantor }}</div>
+                                <div class="text-muted"><i class="bi bi-geo-alt me-1"></i>{{ a.alamat_kantor }}</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge bg-info text-dark badge-category">{{ a.kategori }}</span>
+                        </td>
+                        <td>
+                            <small class="text-primary"><i class="bi bi-link-45deg"></i> {{ a.sosmed_kantor }}</small>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
