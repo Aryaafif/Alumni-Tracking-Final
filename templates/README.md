@@ -1,20 +1,27 @@
-# Alumni Tracking System (Daily 4)
+# Alumni Tracking System - Daily Project 4
 
-Aplikasi berbasis Web untuk melacak dan memverifikasi data alumni berdasarkan 8 kriteria utama.
+Sistem pelacakan alumni berbasis web yang dirancang untuk memverifikasi data alumni berdasarkan 8 kriteria utama yang telah ditentukan. Project ini merupakan kelanjutan dari Daily Project 3 dengan fokus pada implementasi produk jadi.
 
 ## 🔗 Link Produk
-- **Repository GitHub:** [MASUKKAN LINK GITHUB KAMU DISINI]
-- **Live Web App:** [MASUKKAN LINK PYTHONANYWHERE KAMU DISINI]
+- **Repository GitHub:** [https://github.com/Aryaafif/Alumni-Tracking-Final](https://github.com/Aryaafif/Alumni-Tracking-Final)
+- **link github:**  [https://aryaafif.github.io/Alumni-Tracking-Final/]  ##link demo
 
-## 🛠️ Hasil Pengujian Kualitas (Daily 3 Verification)
+## 📊 Pengujian Aplikasi (Aspek Kualitas Daily 3)
 
-| ID | Aspek Kualitas | Skenario Pengujian | Hasil | Status |
-|----|----------------|-------------------|-------|--------|
-| Q1 | **Security** | Mengakses dashboard tanpa login | Diarahkan kembali ke halaman login | Pass |
-| Q2 | **Accuracy** | Memeriksa kecocokan data poin 1-8 dengan evidence | Data LinkedIn & IG sesuai profil asli | Pass |
-| Q3 | **Coverage** | Menghitung persentase data dari 142.292 sumber | Muncul angka coverage otomatis di dashboard | Pass |
-| Q4 | **Usability** | Membuka web melalui browser Smartphone | Tampilan menyesuaikan layar (Responsive) | Pass |
-| Q5 | **Functionality**| Menampilkan informasi tempat kerja & posisi | Data muncul lengkap di tabel alumni | Pass |
+Berikut adalah tabel pengujian aplikasi berdasarkan aspek kualitas yang telah dirancang pada tahap desain sebelumnya:
 
-## 📦 Poin Data yang Dilacak (1-8)
-1. Sosial Media (LinkedIn, IG, FB, TikTok) | 2. Email | 3. No HP | 4. Tempat Bekerja | 5. Alamat Kerja | 6. Posisi | 7. Kategori (PNS/Swasta/Wirausaha) | 8. Sosmed Kantor.
+| ID | Aspek Kualitas | Parameter / Skenario Pengujian | Hasil yang Diharapkan | Status |
+|----|----------------|-------------------------------|-----------------------|--------|
+| Q1 | **Security** | Mengakses halaman `/dashboard` tanpa login | Sistem otomatis mengarahkan kembali ke halaman login | **Pass** |
+| Q2 | **Accuracy** | Verifikasi data alumni (poin 1-8) dengan bukti fisik/sosmed | Data yang ditampilkan sesuai dengan bukti penelusuran (LinkedIn/IG) | **Pass** |
+| Q3 | **Coverage** | Perhitungan persentase data yang diperoleh dari 142.292 data | Dashboard menampilkan nilai coverage secara akurat | **Pass** |
+| Q4 | **Usability** | Uji coba tampilan pada perangkat mobile (Smartphone) | Antarmuka bersifat responsive dan nyaman digunakan | **Pass** |
+| Q5 | **Performance**| Waktu pemuatan halaman dashboard dengan data alumni | Halaman dimuat dengan cepat tanpa ada kendala server | **Pass** |
+
+## 🛠️ Fitur Utama (Poin Penelusuran 1-8)
+Aplikasi ini melacak data alumni yang mencakup:
+1. **Media Sosial:** LinkedIn, Instagram, Facebook, TikTok.
+2. **Kontak:** Email dan Nomor HP aktif.
+3. **Karir:** Tempat bekerja, Alamat kantor, dan Posisi jabatan.
+4. **Kategori:** Status pekerjaan (PNS, Swasta, Wirausaha).
+5. **Unit Kerja:** Media sosial resmi tempat alumni bekerja.
