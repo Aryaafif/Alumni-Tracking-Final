@@ -105,6 +105,29 @@
 
                     <tr class="alumni-row">
                         <td class="ps-4">
+                            <div class="fw-bold name-tag">Arya Afif</div>
+                            <small class="text-muted">210411100XXX</small>
+                        </td>
+                        <td>
+                            <div class="small">
+                                <div><i class="bi bi-linkedin text-primary"></i> linkedin.com/in/aryaafif</div>
+                                <div><i class="bi bi-envelope text-danger"></i> arya@email.com</div>
+                                <div><i class="bi bi-whatsapp text-success"></i> 08123456789</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="small">
+                                <div class="fw-bold">Insinyur Perangkat Lunak</div>
+                                <div>PT. Teknologi Indonesia</div>
+                                <div class="text-muted">Jakarta Selatan</div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-secondary">Swasta</span></td>
+                        <td class="pe-4 text-primary">@tech_id_official</td>
+                    </tr>
+
+                    <tr class="alumni-row">
+                        <td class="ps-4">
                             <div class="fw-bold name-tag">Indayati</div>
                             <small class="text-muted">95620626</small>
                         </td>
@@ -119,33 +142,49 @@
     </div>
 
     <script>
-        function handleLogin() {
-            document.getElementById('section-login').classList.add('hidden');
-            document.getElementById('section-search').classList.remove('hidden');
+    function handleLogin() {
+        document.getElementById('section-login').classList.add('hidden');
+        document.getElementById('section-search').classList.remove('hidden');
+    }
+
+    function handleSearch() {
+        const query = document.getElementById('search-query').value.trim().toLowerCase();
+        
+        if (query === "") {
+            alert("Masukkan nama terlebih dahulu!");
+            return;
         }
 
-        function handleSearch() {
-            const query = document.getElementById('search-query').value.toLowerCase();
-            if(query.trim() === "") {
-                alert("Masukkan nama terlebih dahulu!");
-                return;
-            }
+        // Pindah ke halaman hasil
+        document.getElementById('section-search').classList.add('hidden');
+        document.getElementById('section-result').classList.remove('hidden');
 
-            // Pindah ke halaman hasil
-            document.getElementById('section-search').classList.add('hidden');
-            document.getElementById('section-result').classList.remove('hidden');
+        // Reset semua highlight sebelumnya (biar bersih)
+        const allRows = document.querySelectorAll('.alumni-row');
+        allRows.forEach(row => row.style.backgroundColor = ""); 
 
-            // Logika Mencari & Memberi Background Biru
-            const rows = document.querySelectorAll('.alumni-row');
-            rows.forEach(row => {
-                const name = row.querySelector('.name-tag').innerText.toLowerCase();
-                if(name.includes(query)) {
-                    row.classList.add('highlight-blue'); // Tambah warna biru
-                } else {
-                    row.classList.remove('highlight-blue');
+        // Cari dan beri warna biru
+        let found = false;
+        allRows.forEach(row => {
+            const nameElement = row.querySelector('.name-tag');
+            if (nameElement) {
+                const nameText = nameElement.innerText.toLowerCase();
+                
+                if (nameText.includes(query)) {
+                    // Paksa warna biru langsung lewat style (lebih kuat dari CSS class)
+                    row.style.setProperty('background-color', '#cfe2ff', 'important');
+                    found = true;
+                    
+                    // Scroll otomatis ke baris yang ditemukan
+                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
-            });
+            }
+        });
+
+        if (!found) {
+            console.log("Nama tidak ditemukan di daftar, tapi tabel tetap ditampilkan.");
         }
+    }
     </script>
 </body>
 </html>
