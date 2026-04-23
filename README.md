@@ -25,8 +25,3 @@ Aplikasi ini melacak data alumni yang mencakup:
 4. **Kategori:** Status pekerjaan (PNS, Swasta, Wirausaha).
 5. **Unit Kerja:** Media sosial resmi tempat alumni bekerja.
 
-## 🚀 Cara Menjalankan Secara Lokal
-1. Clone repository: `git clone https://github.com/Aryaafif/Alumni-Tracking-Final.git`
-2. Install dependensi: `pip install -r requirements.txt`
-3. Jalankan aplikasi: `python app.py`
-4. Akses melalui browser di: `http://127.0.0.1:5000`
